@@ -11,7 +11,7 @@ data class ProductEntity(
     val brand: String,
     val price: String,
     val description: String,
-    val imageResId: Int,
+    val imageUrl: String? = null,
     val status: String = "Còn hàng"
 ){
     val productCode: String

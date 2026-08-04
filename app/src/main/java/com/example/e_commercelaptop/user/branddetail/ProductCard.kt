@@ -1,6 +1,5 @@
 package com.example.e_commercelaptop.user.branddetail
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -15,12 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.e_commercelaptop.data.local.ProductEntity
+import coil.compose.AsyncImage
 
 @Composable
 fun ProductCard(
@@ -39,16 +38,17 @@ fun ProductCard(
         Column(modifier = Modifier.fillMaxSize()) {
 
             // ONTOP: Ảnh sản phẩm chiếm cố định 130dp
-            Image(
-                painter = painterResource(id = product.imageResId),
-                contentDescription = product.name,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(130.dp) // Cố định
-                    .clip(RoundedCornerShape(topStart = 8.dp, topEnd = 8.dp)),
-                contentScale = ContentScale.Crop
-            )
-
+            if (!product.imageUrl.isNullOrEmpty()) {
+                AsyncImage(
+                    model = product.imageUrl,
+                    contentDescription = product.name,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(130.dp)
+                        .clip(RoundedCornerShape(topStart = 8.dp, topEnd = 8.dp)),
+                    contentScale = ContentScale.Crop
+                )
+            }
             // DOWNTOP: Vùng thông tin lấp đầy khoảng trống còn lại
             Column(
                 modifier = Modifier
