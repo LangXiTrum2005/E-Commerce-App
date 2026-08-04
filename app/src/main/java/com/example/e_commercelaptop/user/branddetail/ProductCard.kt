@@ -37,18 +37,16 @@ fun ProductCard(
     ) {
         Column(modifier = Modifier.fillMaxSize()) {
 
-            // ONTOP: Ảnh sản phẩm chiếm cố định 130dp
-            if (!product.imageUrl.isNullOrEmpty()) {
-                AsyncImage(
-                    model = product.imageUrl,
-                    contentDescription = product.name,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(130.dp)
-                        .clip(RoundedCornerShape(topStart = 8.dp, topEnd = 8.dp)),
-                    contentScale = ContentScale.Crop
-                )
-            }
+            // ONTOP: Ảnh sản phẩm chiếm cố định 130d
+            AsyncImage(
+                model = product.imageUrl,
+                contentDescription = product.name,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(130.dp)
+                    .clip(RoundedCornerShape(topStart = 8.dp, topEnd = 8.dp)),
+                contentScale = ContentScale.Crop
+            )
             // DOWNTOP: Vùng thông tin lấp đầy khoảng trống còn lại
             Column(
                 modifier = Modifier

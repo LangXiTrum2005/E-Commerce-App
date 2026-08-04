@@ -536,13 +536,6 @@ object ProductRepository {
             imageUrl = "https://storage-asset.msi.com/global/picture/image/feature/nb/Prestige/Prestige16-AI-Studio-Evo-B1V/kv-nb.webp "
         ),
         ProductEntity(
-            name = "MSI Summit E14 Flip",
-            brand = "MSI",
-            price = "31.500.000₫",
-            description = "Core i7-1360P, RAM 16GB, SSD 1TB, 14.0 inch QHD+ Touch Gập 360",
-            imageUrl = " https://product.hstatic.net/200000722513/product/ava_e9b71b80d649489ca204b1f08fb4e2d4_master.png"
-        ),
-        ProductEntity(
             name = "MSI Thin GF63 12VE",
             brand = "MSI",
             price = "17.990.000₫",
@@ -563,15 +556,6 @@ object ProductRepository {
             description = "Core i7-13620H, RAM 16GB, SSD 1TB, RTX 4070 8GB, 15.6 inch FHD 144Hz",
             imageUrl = "https://cdn2.fptshop.com.vn/unsafe/384x0/filters:format(webp):quality(75)/msi_katana_15_b13v_1_9310c95515.png "
         ),
-        ProductEntity(
-            name = "MSI Pulse 16 AI C1V",
-            brand = "MSI",
-            price = "35.990.000₫",
-            description = "Ultra 7 155H, RAM 16GB, SSD 1TB, RTX 4060 8GB, 16.0 inch QHD+ 240Hz",
-            imageUrl = " https://www.notebookcheck.net/typo3temp/_processed_/3/3/csm_MSI_Pulse_16_AI_C1VGKG__1__8391651968.jpg"
-        ),
-
-
 
         //MICROSOFT
         ProductEntity(
@@ -710,13 +694,7 @@ object ProductRepository {
             description = "Core i7-1360P, RAM 16GB, SSD 1TB, 16.0 inch WQXGA Cảm ứng gập 360",
             imageUrl = "https://www.gizmochina.com/wp-content/uploads/2022/07/LG-Gram-16-2-in-1-2022.jpg "
         ),
-        ProductEntity(
-            name = "LG Gram Pro 17 2024",
-            brand = "LG",
-            price = "39.990.000₫",
-            description = "Ultra 7 155H, RAM 32GB, SSD 1TB, 17.0 inch WQXGA 144Hz Anti-Glare",
-            imageUrl = " https://www.notebookcheck.net/typo3temp/_processed_/6/3/csm_LG_Gram_Pro_AI_17_17Z90TR_53e5ffb990.jpg"
-        ),
+
 
         //GIGABYTE
         ProductEntity(
@@ -782,13 +760,7 @@ object ProductRepository {
             description = "Core i7-12700H, RAM 32GB, SSD 1TB, RTX 3080Ti 16GB, 17.3 inch FHD 360Hz",
             imageUrl = "https://m.media-amazon.com/images/I/71tV+pLMw4L._AC_SX355_.jpg "
         ),
-        ProductEntity(
-            name = "Gigabyte AORUS 17X AXF",
-            brand = "GIGABYTE",
-            price = "69.990.000₫",
-            description = "Core i9-13900HX, RAM 32GB, SSD 2TB, RTX 4080 12GB, 17.3 inch QHD 240Hz",
-            imageUrl = " https://cdn1.smartprix.com/rx-i1XhscHgO-w420-h420/gigabyte-aorus-17x-a.webp"
-        ),
+
         ProductEntity(
             name = "Gigabyte AERO 14 OLED BMF",
             brand = "GIGABYTE",
