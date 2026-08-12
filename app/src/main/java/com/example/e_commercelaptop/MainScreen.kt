@@ -22,7 +22,6 @@ import com.example.e_commercelaptop.user.branddetail.ProductCard
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-@Preview
 @Composable
 fun MainScreen(
     onNavigateToBrandDetail: (String) -> Unit = {},

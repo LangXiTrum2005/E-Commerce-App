@@ -8,7 +8,7 @@ import com.example.e_commercelaptop.MainScreen
 import com.example.e_commercelaptop.user.welcome.WelcomeScreen
 
 @Composable
-fun AppNavigation() {
+fun Splash_to_MainScreen() {
 
     val navController = rememberNavController()
 
