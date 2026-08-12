@@ -13,10 +13,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.e_commercelaptop.ui.theme.YellowMain
+import com.example.e_commercelaptop.user.welcome.WelcomeScreen
 
+@Preview
 @Composable
 fun HomeHeader(
     modifier: Modifier = Modifier,
@@ -28,7 +31,7 @@ fun HomeHeader(
         modifier = modifier
             .fillMaxWidth()
             .height(44.dp)
-            .background(YellowMain)
+            .background(Color(0xFF2875F2))
             .padding(horizontal = 12.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
