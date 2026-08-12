@@ -21,39 +21,62 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-
 @Composable
 fun BrandCategoryRow(
     brands: List<String>,
+    selectedBrands: Set<String>,
     onBrandClick: (String) -> Unit = {}
-){
+) {
     LazyRow(
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White)
             .padding(vertical = 10.dp),
-        contentPadding = PaddingValues(horizontal = 12.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+
+        contentPadding = PaddingValues(
+            horizontal = 12.dp
+        ),
+
+        horizontalArrangement =
+            Arrangement.spacedBy(8.dp)
     ) {
-        items(brands){ brand ->
+        items(brands) { brand ->
+            val isSelected = brand in selectedBrands
             Box(
                 modifier = Modifier
                     .clip(RoundedCornerShape(16.dp))
                     .border(
                         width = 1.dp,
-                        color = Color(0xFFDCDCDC),
+                        color = if (isSelected) {
+                            Color(0xFF2563EB)
+                        } else {
+                            Color(0xFFE2E8F0)
+                        },
                         shape = RoundedCornerShape(16.dp)
                     )
-                    .background(Color(0xFFF8F9FA))
-                    .clickable { onBrandClick(brand) }
+                    .background(
+                        color = if (isSelected) {
+                            Color(0xFF2563EB)
+                        } else {
+                            Color(0xFFF8FAFC)
+                        },
+                        shape = RoundedCornerShape(16.dp)
+                    )
+                    .clickable {
+                        onBrandClick(brand)
+                    }
                     .padding(horizontal = 16.dp, vertical = 6.dp),
                 contentAlignment = Alignment.Center
-            ){
+            ) {
                 Text(
                     text = brand,
                     fontSize = 13.sp,
                     fontWeight = FontWeight.Medium,
-                    color = Color.Black
+                    color = if (isSelected) {
+                        Color.White
+                    } else {
+                        Color(0xFF1E293B)
+                    }
                 )
             }
         }

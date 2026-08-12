@@ -26,45 +26,108 @@ import kotlinx.coroutines.withContext
 @Composable
 fun MainScreen(
     onNavigateToBrandDetail: (String) -> Unit = {},
-    onProductClick: (Int) -> Unit = {} // Sự kiện khi bấm vào card sản phẩm
+    onProductClick: (Int) -> Unit = {}
 ) {
     var selectedTab by remember { mutableStateOf("Home") }
-
-    // 1. Khởi tạo Room Database
+    var selectedBrands by remember {
+        mutableStateOf<Set<String>>(emptySet())
+    }
     val context = LocalContext.current
-    val db = remember { AppDatabase.getDatabase(context) }
+    val db = remember {
+        AppDatabase.getDatabase(context)
+    }
 
-    // Biến chứa danh sách sản phẩm lấy từ Room DB
-    var productList by remember { mutableStateOf<List<ProductEntity>>(emptyList()) }
+    // Danh sách sản phẩm lấy từ Room DB
+    var productList by remember {
+        mutableStateOf<List<ProductEntity>>(emptyList())
+    }
 
-    // 2. Tự động kiểm tra và chèn dữ liệu từ ProductRepository.initialProducts vào Room nếu DB trống
+    // Tự động kiểm tra và chèn dữ liệu
+    // nếu Database đang trống
     LaunchedEffect(Unit) {
         withContext(Dispatchers.IO) {
             val dao = db.productDao()
             dao.getAllProducts().collect { list ->
                 if (list.isEmpty()) {
-                    // Chèn danh sách 18 laptop từ ProductRepository.initialProducts
-                    dao.insertProducts(ProductRepository.initialProducts)
+                    // Chèn danh sách sản phẩm ban đầu
+                    dao.insertProducts(
+                        ProductRepository.initialProducts
+                    )
                 } else {
+                    // Database đã có dữ liệu
                     productList = list
                 }
             }
         }
     }
-
-    // Dải thương hiệu đổi theo Tab
     val displayedBrands = when (selectedTab) {
-        "Office" -> listOf("LENOVO", "DELL", "HP", "MACBOOK", "ASUS")
-        "Gaming" -> listOf("LENOVO", "DELL", "ASUS", "ACER", "MSI", "GIGABYTE")
-        "Business" -> listOf("LENOVO", "DELL", "MACBOOK", "MICROSOFT", "LG")
-        else -> listOf("LENOVO", "DELL", "HP", "MACBOOK", "ASUS", "ACER", "MSI", "MICROSOFT", "LG", "GIGABYTE")
-    }
 
+        "Office" -> listOf(
+            "LENOVO",
+            "DELL",
+            "HP",
+            "MACBOOK",
+            "ASUS"
+        )
+
+        "Gaming" -> listOf(
+            "LENOVO",
+            "DELL",
+            "ASUS",
+            "ACER",
+            "MSI",
+            "GIGABYTE"
+        )
+
+        "Business" -> listOf(
+            "LENOVO",
+            "DELL",
+            "MACBOOK",
+            "MICROSOFT",
+            "LG"
+        )
+
+        else -> listOf(
+            "LENOVO",
+            "DELL",
+            "HP",
+            "MACBOOK",
+            "ASUS",
+            "ACER",
+            "MSI",
+            "MICROSOFT",
+            "LG",
+            "GIGABYTE"
+        )
+    }
+    val filteredProducts = remember(
+        productList,
+        selectedBrands
+    ) {
+
+        if (selectedBrands.isEmpty()) {
+            productList
+        } else {
+            val selectedProductCodes = selectedBrands
+                .map {
+                    it.take(2).uppercase()
+                }
+                .toSet()
+
+            // Lọc sản phẩm
+            productList.filter { product ->
+
+                product.productCode in selectedProductCodes
+            }
+        }
+    }
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             if (selectedTab != "Account") {
-                Box(modifier = Modifier.statusBarsPadding()) {
+                Box(
+                    modifier = Modifier.statusBarsPadding()
+                ) {
                     HomeHeader(
                         onSearchClick = {},
                         onCartClick = {},
@@ -74,11 +137,14 @@ fun MainScreen(
             }
         },
         bottomBar = {
-            Box(modifier = Modifier.navigationBarsPadding()) {
+            Box(
+                modifier = Modifier.navigationBarsPadding()
+            ) {
                 HomeFooter(
                     selectedTab = selectedTab,
                     onTabSelected = { tabName ->
                         selectedTab = tabName
+                        selectedBrands = emptySet()
                     }
                 )
             }
@@ -98,28 +164,35 @@ fun MainScreen(
                     .background(Color(0xFFF5F5F5))
                     .padding(innerPadding)
             ) {
-                // Dải nút thương hiệu cuộn ngang
                 BrandCategoryRow(
                     brands = displayedBrands,
+                    selectedBrands = selectedBrands,
                     onBrandClick = { brand ->
-                        onNavigateToBrandDetail(brand)
+                        selectedBrands =
+                            if (brand in selectedBrands) {
+                                selectedBrands - brand
+                            } else {
+                                selectedBrands + brand
+                            }
                     }
                 )
+                Spacer(
+                    modifier = Modifier.height(4.dp)
+                )
 
-                Spacer(modifier = Modifier.height(4.dp))
-
-                // Lưới hiển thị 2 cột danh sách laptop lấy từ Room DB
                 LazyVerticalGrid(
+                    modifier = Modifier.fillMaxSize(),
                     columns = GridCells.Fixed(2),
                     contentPadding = PaddingValues(8.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    modifier = Modifier.fillMaxSize()
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    items(productList) { product ->
+                    items(filteredProducts) { product ->
                         ProductCard(
                             product = product,
-                            onClick = { onProductClick(product.id) }
+                            onClick = {
+                                onProductClick(product.id)
+                            }
                         )
                     }
                 }
