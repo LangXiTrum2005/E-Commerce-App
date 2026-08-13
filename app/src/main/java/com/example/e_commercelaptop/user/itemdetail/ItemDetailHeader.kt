@@ -33,145 +33,62 @@ fun ItemDetailHeader(
 
     Row(
         modifier = Modifier
-            // ========================================================
-            // STATUS BAR
-            // ========================================================
-
             .statusBarsPadding()
-
-            // ========================================================
-            // HEADER HEIGHT
-            // ========================================================
-
             .fillMaxWidth()
             .height(64.dp)
-
-            // ========================================================
-            // HORIZONTAL PADDING
-            // ========================================================
-
-            .padding(
-                horizontal = 16.dp
-            ),
-
+            .padding(horizontal = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
-
-        horizontalArrangement =
-            Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
-
-        // ============================================================
-        // BACK BUTTON
-        // ============================================================
-
         IconButton(
             onClick = onBackClick,
-
             modifier = Modifier.size(48.dp)
         ) {
-
             Icon(
                 imageVector =
                     Icons.Outlined.ArrowBack,
-
-                contentDescription =
-                    "Quay lại",
-
-                tint =
-                    Color(0xFF111827),
-
-                modifier =
-                    Modifier.size(28.dp)
+                contentDescription = "Quay lại",
+                tint = Color(0xFF111827),
+                modifier = Modifier.size(28.dp)
             )
         }
 
-
-        // ============================================================
-        // RIGHT ACTIONS
-        // ============================================================
-
         Row(
-            verticalAlignment =
-                Alignment.CenterVertically,
-
-            horizontalArrangement =
-                Arrangement.spacedBy(4.dp)
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-
-            // ========================================================
-            // FAVORITE
-            // ========================================================
-
             IconButton(
                 onClick = onFavoriteClick,
-
                 modifier = Modifier.size(48.dp)
             ) {
 
                 Icon(
-                    imageVector =
-                        Icons.Outlined.FavoriteBorder,
-
-                    contentDescription =
-                        "Yêu thích",
-
-                    tint =
-                        Color(0xFF111827),
-
-                    modifier =
-                        Modifier.size(28.dp)
+                    imageVector = Icons.Outlined.FavoriteBorder,
+                    contentDescription = "Yêu thích",
+                    tint = Color(0xFF111827),
+                    modifier = Modifier.size(28.dp)
                 )
             }
-
-
-            // ========================================================
-            // SHARE
-            // ========================================================
-
             IconButton(
                 onClick = onShareClick,
-
                 modifier = Modifier.size(48.dp)
             ) {
-
                 Icon(
-                    imageVector =
-                        Icons.Outlined.Share,
-
-                    contentDescription =
-                        "Chia sẻ",
-
-                    tint =
-                        Color(0xFF111827),
-
-                    modifier =
-                        Modifier.size(28.dp)
+                    imageVector = Icons.Outlined.Share,
+                    contentDescription = "Chia sẻ",
+                    tint = Color(0xFF111827),
+                    modifier = Modifier.size(28.dp)
                 )
             }
-
-
-            // ========================================================
-            // CART
-            // ========================================================
-
             IconButton(
                 onClick = onCartClick,
-
                 modifier = Modifier.size(48.dp)
             ) {
-
                 Icon(
-                    imageVector =
-                        Icons.Outlined.ShoppingCart,
-
-                    contentDescription =
-                        "Giỏ hàng",
-
-                    tint =
-                        Color(0xFF111827),
-
-                    modifier =
-                        Modifier.size(29.dp)
+                    imageVector = Icons.Outlined.ShoppingCart,
+                    contentDescription = "Giỏ hàng",
+                    tint = Color(0xFF111827),
+                    modifier = Modifier.size(29.dp)
                 )
             }
         }

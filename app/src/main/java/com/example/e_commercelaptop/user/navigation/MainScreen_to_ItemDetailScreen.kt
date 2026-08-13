@@ -1,11 +1,11 @@
-package com.example.e_commercelaptop.navigation
+package com.example.e_commercelaptop.user.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.e_commercelaptop.ItemDetailScreen
 import com.example.e_commercelaptop.MainScreen
-import com.example.e_commercelaptop.user.ItemDetail.ItemDetailScreen
 
 object AppRoutes {
 
@@ -23,9 +23,7 @@ fun MainScreen_to_ItemDetailScreen() {
         startDestination = AppRoutes.MAIN
     ) {
 
-        // =========================================================
         // MAIN SCREEN
-        // =========================================================
 
         composable(
             route = AppRoutes.MAIN
@@ -37,7 +35,6 @@ fun MainScreen_to_ItemDetailScreen() {
 
                     // Khi click BẤT KỲ ProductCard nào
                     // → chuyển sang ItemDetailScreen
-
                     navController.navigate(
                         AppRoutes.ITEM_DETAIL
                     )
@@ -59,7 +56,6 @@ fun MainScreen_to_ItemDetailScreen() {
                 onBackClick = {
 
                     // ← quay lại MainScreen
-
                     navController.popBackStack()
                 }
             )
