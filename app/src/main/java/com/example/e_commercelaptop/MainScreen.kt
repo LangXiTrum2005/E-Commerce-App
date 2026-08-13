@@ -10,7 +10,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.e_commercelaptop.data.local.AppDatabase
 import com.example.e_commercelaptop.data.local.ProductEntity
@@ -99,11 +98,12 @@ fun MainScreen(
             "GIGABYTE"
         )
     }
+
+    // LỌC sản phẩm theo ProductCode
     val filteredProducts = remember(
         productList,
         selectedBrands
     ) {
-
         if (selectedBrands.isEmpty()) {
             productList
         } else {
@@ -112,14 +112,13 @@ fun MainScreen(
                     it.take(2).uppercase()
                 }
                 .toSet()
-
             // Lọc sản phẩm
             productList.filter { product ->
-
                 product.productCode in selectedProductCodes
             }
         }
     }
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
