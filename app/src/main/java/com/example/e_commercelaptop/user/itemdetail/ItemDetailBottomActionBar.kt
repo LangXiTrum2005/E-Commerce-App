@@ -1,20 +1,12 @@
 package com.example.e_commercelaptop.user.ItemDetail
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ShoppingCart
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,68 +19,65 @@ import androidx.compose.ui.unit.sp
 @Preview
 @Composable
 fun ItemDetailBottomActionBar(
-    // CALLBACKS
     onAddToCartClick: () -> Unit = {},
     onBuyNowClick: () -> Unit = {}
 ) {
-
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .navigationBarsPadding()
-            .padding(horizontal = 16.dp, vertical = 10.dp),
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
-        verticalAlignment = Alignment.CenterVertically
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shadowElevation = 8.dp,
+        color = Color.White
     ) {
-
-        // THÊM VÀO GIỎ
-        Button(
-            onClick = onAddToCartClick,
+        Row(
             modifier = Modifier
-                .weight(1f)
-                .size(height = 58.dp, width = 0.dp),
-            shape = RoundedCornerShape(14.dp),
-            colors = ButtonDefaults
-                .buttonColors(
-                    containerColor = Color(0xFFEE4D2D),
+                .fillMaxWidth()
+                .navigationBarsPadding()
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // THÊM VÀO GIỎ (Outlined style)
+            OutlinedButton(
+                onClick = onAddToCartClick,
+                modifier = Modifier
+                    .weight(1f)
+                    .height(50.dp),
+                shape = RoundedCornerShape(8.dp),
+                border = BorderStroke(1.dp, Color(0xFF2875F2)),
+                colors = ButtonDefaults.outlinedButtonColors(
+                    contentColor = Color(0xFF2875F2)
+                )
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.ShoppingCart,
+                    contentDescription = "Thêm vào giỏ",
+                    modifier = Modifier.size(20.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "Thêm vào giỏ",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium
+                )
+            }
+
+            // MUA NGAY (Filled style)
+            Button(
+                onClick = onBuyNowClick,
+                modifier = Modifier
+                    .weight(1f)
+                    .height(50.dp),
+                shape = RoundedCornerShape(8.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF2875F2),
                     contentColor = Color.White
                 )
-        ) {
-            Icon(
-                imageVector = Icons.Outlined.ShoppingCart,
-                contentDescription = "Thêm vào giỏ",
-                modifier = Modifier.size(25.dp),
-                tint = Color.White
-            )
-            Text(
-                text = "Thêm vào giỏ",
-                modifier = Modifier.padding(start = 8.dp),
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Medium,
-                color = Color.White
-            )
-        }
-
-        // MUA NGAY
-        Button(
-            onClick = onBuyNowClick,
-
-            modifier = Modifier
-                .weight(1f)
-                .size(height = 58.dp, width = 0.dp),
-            shape = RoundedCornerShape(14.dp),
-            colors = ButtonDefaults
-                .buttonColors(
-                    containerColor = Color(0xFF2563EB),
-                    contentColor = Color.White
-            )
-        ) {
-            Text(
-                text = "Mua ngay",
-                fontSize = 16.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = Color.White
-            )
+            ) {
+                Text(
+                    text = "Mua ngay",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
         }
     }
 }
