@@ -22,6 +22,7 @@ fun ItemDetailScreen(
     onBackClick: () -> Unit
 ) {
     var selectedTab by remember { mutableIntStateOf(0) } // 0: Mô tả, 1: Đánh giá
+    var quantity by remember { mutableIntStateOf(1) }
 
     Scaffold(
         topBar = {
@@ -43,9 +44,6 @@ fun ItemDetailScreen(
                 .background(Color(0xFFF9FAFB)) // Light grey background like image
                 .verticalScroll(rememberScrollState())
         ) {
-            // =========================================================
-            // PRODUCT INFO (Tạm thời để trống)
-            // =========================================================
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -54,35 +52,31 @@ fun ItemDetailScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "[Phần Product Info sẽ thêm sau]",
+                    text = "",
                     color = Color.Gray,
                     fontSize = 16.sp
                 )
             }
 
             Spacer(modifier = Modifier.height(8.dp))
-
-            // =========================================================
             // QUANTITY SELECTOR
-            // =========================================================
             Box(modifier = Modifier.background(Color.White)) {
-                QuantitySelector()
+                QuantitySelector(
+                    quantity = quantity,
+                    onQuantityChanged = { newQuantity ->
+                        quantity = newQuantity
+                    }
+                )
             }
 
             Spacer(modifier = Modifier.height(8.dp))
-
-            // =========================================================
             // SERVICE FEATURES
-            // =========================================================
             Box(modifier = Modifier.background(Color.White)) {
                 ServiceFeatures()
             }
 
             Spacer(modifier = Modifier.height(8.dp))
-
-            // =========================================================
             // TABS (Mô tả sản phẩm | Đánh giá)
-            // =========================================================
             Column(modifier = Modifier.background(Color.White)) {
                 Row(
                     modifier = Modifier
@@ -103,21 +97,17 @@ fun ItemDetailScreen(
                         onClick = { selectedTab = 1 }
                     )
                 }
-
                 HorizontalDivider(thickness = 1.dp, color = Color(0xFFF3F4F6))
 
-                // =========================================================
                 // TAB CONTENT
-                // =========================================================
                 if (selectedTab == 0) {
                     ProductDescription(
-                        description = "HP Pavilion 15-eg2082TU là chiếc laptop mỏng nhẹ, hiệu năng mạnh mẽ đến từ HP, phù hợp cho học tập, làm việc và giải trí. Trang bị vi xử lý Intel Core i5 thế hệ 13, RAM 16GB và ổ cứng SSD tốc độ cao giúp máy xử lý mượt mà mọi tác vụ."
+                        description = ""
                     )
                 } else {
                     ReviewSection()
                 }
             }
-            
             Spacer(modifier = Modifier.height(20.dp))
         }
     }

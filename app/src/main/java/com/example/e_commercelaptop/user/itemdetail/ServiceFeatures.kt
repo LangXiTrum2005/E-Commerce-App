@@ -43,7 +43,8 @@ fun ServiceFeatures() {
                 modifier = Modifier.weight(1f),
                 icon = Icons.Outlined.LocalShipping,
                 title = "Miễn phí giao hàng",
-                subtitle = "Toàn quốc"
+                subtitle = "Toàn quốc",
+
             )
             
             VerticalDivider(modifier = Modifier.height(60.dp), color = Color(0xFFF3F4F6))
@@ -91,7 +92,7 @@ private fun ServiceFeatureItem(
         Icon(
             imageVector = icon,
             contentDescription = null,
-            tint = Color(0xFF374151),
+            tint = Color(0xFF2563EB),
             modifier = Modifier.size(24.dp)
         )
         Spacer(modifier = Modifier.height(8.dp))
@@ -101,6 +102,7 @@ private fun ServiceFeatureItem(
             fontWeight = FontWeight.Medium,
             color = Color(0xFF374151),
             textAlign = TextAlign.Center,
+            minLines = 2,
             maxLines = 2,
             lineHeight = 14.sp
         )
@@ -108,7 +110,7 @@ private fun ServiceFeatureItem(
         Text(
             text = subtitle,
             fontSize = 10.sp,
-            color = Color(0xFF9CA3AF),
+            color = Color.Red,
             textAlign = TextAlign.Center
         )
     }
