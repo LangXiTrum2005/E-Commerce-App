@@ -1,4 +1,4 @@
-package com.example.e_commercelaptop.user.ItemDetail
+package com.example.e_commercelaptop.user.itemdetail
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

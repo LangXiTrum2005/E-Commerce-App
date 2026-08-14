@@ -1,4 +1,4 @@
-package com.example.e_commercelaptop.user.ItemDetail
+package com.example.e_commercelaptop.user.itemdetail
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth

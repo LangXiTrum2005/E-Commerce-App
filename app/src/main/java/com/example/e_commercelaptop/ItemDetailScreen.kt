@@ -41,7 +41,7 @@ fun ItemDetailScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .background(Color(0xFFF9FAFB)) // Light grey background like image
+                .background(Color(0xFFF9FAFB))
                 .verticalScroll(rememberScrollState())
         ) {
             Box(

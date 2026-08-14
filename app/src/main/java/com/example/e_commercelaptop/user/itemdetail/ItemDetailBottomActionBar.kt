@@ -1,4 +1,4 @@
-package com.example.e_commercelaptop.user.ItemDetail
+package com.example.e_commercelaptop.user.itemdetail
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background

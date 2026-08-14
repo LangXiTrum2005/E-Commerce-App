@@ -79,16 +79,6 @@ fun WelcomeScreen(
                 modifier = Modifier.height(10.dp)
             )
 
-
-            // TITLE
-            Text(
-                text = "Chào mừng bạn đến với",
-                fontSize = 30.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFF14213D),
-                textAlign = TextAlign.Center
-            )
-
             Text(
                 text = "E-Commerce Laptop",
                 fontSize = 32.sp,
