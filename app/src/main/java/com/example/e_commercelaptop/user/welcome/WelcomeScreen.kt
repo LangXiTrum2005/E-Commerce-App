@@ -34,7 +34,6 @@ import com.example.e_commercelaptop.R
 fun WelcomeScreen(
     onWelcomeClick: () -> Unit
 ) {
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -108,7 +107,6 @@ fun WelcomeScreen(
                 modifier = Modifier.height(22.dp)
             )
 
-
             FeatureCard(
                 icon = Icons.Default.Laptop,
                 title = "Khám phá dễ dàng",
@@ -143,11 +141,9 @@ fun WelcomeScreen(
                     "Lưu lại sản phẩm yêu thích và theo dõi đơn hàng mọi lúc, mọi nơi."
             )
 
-
             Spacer(
                 modifier = Modifier.height(14.dp)
             )
-
 
             Button(
                 onClick = onWelcomeClick,

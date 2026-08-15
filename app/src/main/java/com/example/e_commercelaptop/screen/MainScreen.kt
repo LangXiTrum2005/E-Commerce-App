@@ -1,4 +1,4 @@
-package com.example.e_commercelaptop
+package com.example.e_commercelaptop.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -152,9 +152,10 @@ fun MainScreen(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Color.White)
                     .padding(innerPadding)
-            )
+            ) {
+                ProfileScreen()
+            }
         } else {
             Column(
                 modifier = Modifier
