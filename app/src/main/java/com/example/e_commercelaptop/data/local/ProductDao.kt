@@ -14,5 +14,5 @@ interface ProductDao{
     fun getProductById(productId: Int): Flow<ProductEntity?>
 
     @Insert
-    fun insertProducts(products: List<ProductEntity>)
+    suspend fun insertProducts(products: List<ProductEntity>)
 }

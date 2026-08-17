@@ -24,7 +24,8 @@ import kotlinx.coroutines.withContext
 @Composable
 fun MainScreen(
     onNavigateToBrandDetail: (String) -> Unit = {},
-    onProductClick: (Int) -> Unit = {}
+    onProductClick: (Int) -> Unit = {},
+    onCartClick: () -> Unit = {}
 ) {
     var selectedTab by remember { mutableStateOf("Home") }
     var selectedBrands by remember {
@@ -128,7 +129,7 @@ fun MainScreen(
                 ) {
                     HomeHeader(
                         onSearchClick = {},
-                        onCartClick = {},
+                        onCartClick = onCartClick,
                         onChatClick = {}
                     )
                 }

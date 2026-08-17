@@ -15,7 +15,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-@Preview
+@Preview(
+    name = "Small phone",
+    widthDp = 320,
+    heightDp = 568,
+    showBackground = true
+)
+@Preview(
+    name = "Normal phone",
+    widthDp = 360,
+    heightDp = 800,
+    showBackground = true
+)
+@Preview(
+    name = "Large phone",
+    widthDp = 412,
+    heightDp = 915,
+    showBackground = true
+)
 @Composable
 fun ItemDetailBottomActionBar(
     onAddToCartClick: () -> Unit = {},

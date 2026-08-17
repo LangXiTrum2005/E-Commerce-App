@@ -20,10 +20,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,6 +35,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.e_commercelaptop.data.local.AppDatabase
+import com.example.e_commercelaptop.data.local.CartItemEntity
 import com.example.e_commercelaptop.data.local.ProductEntity
 import com.example.e_commercelaptop.user.itemdetail.ItemDetailBottomActionBar
 import com.example.e_commercelaptop.user.itemdetail.ItemDetailHeader
@@ -43,12 +46,14 @@ import com.example.e_commercelaptop.user.itemdetail.ServiceFeatures
 import com.example.e_commercelaptop.user.itemdetail.productinfo.ProductInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @Composable
 fun ItemDetailScreen(
     productId: Int,
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
+    onCartClick: () -> Unit
 ) {
     var selectedTab by remember {
         mutableIntStateOf(0)
@@ -63,6 +68,10 @@ fun ItemDetailScreen(
     val database = remember {
         AppDatabase.getDatabase(context)
     }
+
+    val coroutineScope = rememberCoroutineScope()
+
+    val totalQuantity by database.cartDao().getTotalQuantity().collectAsState(initial = 0)
 
     var product by remember(productId) {
         mutableStateOf<ProductEntity?>(null)
@@ -90,14 +99,23 @@ fun ItemDetailScreen(
                 onBackClick = onBackClick,
                 onFavoriteClick = {},
                 onShareClick = {},
-                onCartClick = {}
+                onCartClick = onCartClick,
+                cartItemCount = totalQuantity ?: 0
             )
         },
 
         bottomBar = {
 
             ItemDetailBottomActionBar(
-                onAddToCartClick = {},
+                onAddToCartClick = {
+                    coroutineScope.launch {
+                        val existingItem = database.cartDao().getCartItemById(productId)
+                        val newQuantity = (existingItem?.quantity ?: 0) + quantity
+                        database.cartDao().insertOrUpdate(
+                            CartItemEntity(productId = productId, quantity = newQuantity)
+                        )
+                    }
+                },
                 onBuyNowClick = {}
             )
         }
