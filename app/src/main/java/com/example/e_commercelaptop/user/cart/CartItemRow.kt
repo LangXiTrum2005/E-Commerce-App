@@ -3,6 +3,7 @@ package com.example.e_commercelaptop.user.cart
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -41,7 +42,8 @@ fun CartItemRow(
     isSelected: Boolean,
     onSelectedChange: (Boolean) -> Unit,
     onDecrease: () -> Unit,
-    onIncrease: () -> Unit
+    onIncrease: () -> Unit,
+    onDelete: () -> Unit
 ) {
 
     Row(
@@ -156,6 +158,19 @@ fun CartItemRow(
                 color = Color(0xFF111827)
             )
 
+
+            Spacer(
+                modifier = Modifier.size(6.dp)
+            )
+
+            Text(
+                text = "Xoá",
+                color = Color.Red,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
+                    .clickable { onDelete() }
+            )
 
             Spacer(
                 modifier = Modifier.size(6.dp)

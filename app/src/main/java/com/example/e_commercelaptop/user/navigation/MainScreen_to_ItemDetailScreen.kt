@@ -140,6 +140,19 @@ fun MainScreen_to_ItemDetailScreen() {
                         database.cartDao().updateQuantity(productId, currentQty + 1)
                     }
                 },
+                onDeleteProduct = { productId ->
+                    coroutineScope.launch {
+                        database.cartDao().deleteById(productId)
+                    }
+                },
+                onDeleteBrand = { brandName ->
+                    coroutineScope.launch {
+                        val productsInBrand = cartProducts.filter { it.brand == brandName }
+                        productsInBrand.forEach { product ->
+                            database.cartDao().deleteById(product.id)
+                        }
+                    }
+                },
                 onSelectAll = {
                     val allIds = cartProducts.map { it.id }.toSet()
                     selectedProductIds = if (selectedProductIds.size == allIds.size) {

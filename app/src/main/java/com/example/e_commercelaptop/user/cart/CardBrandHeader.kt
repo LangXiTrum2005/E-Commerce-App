@@ -1,6 +1,8 @@
 package com.example.e_commercelaptop.user.cart
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Checkbox
@@ -19,7 +21,8 @@ fun CartBrandHeader(
     brand: String,
     products: List<ProductEntity>,
     selectedProductIds: Set<Int>,
-    onToggleBrand: (Boolean) -> Unit
+    onToggleBrand: (Boolean) -> Unit,
+    onDeleteBrand: () -> Unit
 ) {
 
     val allSelected =
@@ -55,6 +58,18 @@ fun CartBrandHeader(
             fontWeight = FontWeight.Medium,
 
             color = Color(0xFF111827)
+        )
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        Text(
+            text = "Xoá",
+            color = Color.Red,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .clickable { onDeleteBrand() }
+                .padding(horizontal = 4.dp)
         )
     }
 }

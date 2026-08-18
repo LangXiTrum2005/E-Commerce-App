@@ -25,6 +25,8 @@ fun CartScreen(
     onProductSelected: (Int, Boolean) -> Unit,
     onDecreaseQuantity: (Int) -> Unit,
     onIncreaseQuantity: (Int) -> Unit,
+    onDeleteProduct: (Int) -> Unit,
+    onDeleteBrand: (String) -> Unit,
     onSelectAll: () -> Unit,
     onLaptopVoucherClick: () -> Unit = {},
     onBuyClick: () -> Unit = {}
@@ -109,6 +111,9 @@ fun CartScreen(
                             brandProducts.forEach { product ->
                                 onProductSelected(product.id, isSelected)
                             }
+                        },
+                        onDeleteBrand = {
+                            onDeleteBrand(brand)
                         }
                     )
                 }
@@ -138,6 +143,9 @@ fun CartScreen(
                         },
                         onIncrease = {
                             onIncreaseQuantity(product.id)
+                        },
+                        onDelete = {
+                            onDeleteProduct(product.id)
                         }
                     )
                 }
