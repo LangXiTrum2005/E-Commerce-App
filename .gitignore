@@ -1,15 +1,29 @@
+# Gradle files
+.gradle/
+build/
+
+# Kotlin and IDE files
+.kotlin/
+.artifacts/
+.idea/
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+*.ipr
+*.iws
+
+# Android Studio local configuration
 local.properties
+
+# Captures and logs
+captures/
+*.log
+
+# Native build artifacts
+.externalNativeBuild/
+.cxx/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Other
+node_modules/
