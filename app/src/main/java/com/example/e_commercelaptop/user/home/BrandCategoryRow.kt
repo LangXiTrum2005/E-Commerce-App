@@ -32,13 +32,10 @@ fun BrandCategoryRow(
             .fillMaxWidth()
             .background(Color.White)
             .padding(vertical = 10.dp),
-
         contentPadding = PaddingValues(
             horizontal = 12.dp
         ),
-
-        horizontalArrangement =
-            Arrangement.spacedBy(8.dp)
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(brands) { brand ->
             val isSelected = brand in selectedBrands

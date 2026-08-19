@@ -30,7 +30,6 @@ fun CartBrandHeader(
                 products.all {
                     selectedProductIds.contains(it.id)
                 }
-
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -38,30 +37,21 @@ fun CartBrandHeader(
                 horizontal = 12.dp,
                 vertical = 8.dp
             ),
-
         verticalAlignment = Alignment.CenterVertically
     ) {
-
         Checkbox(
             checked = allSelected,
-
             onCheckedChange = { isChecked ->
                 onToggleBrand(isChecked)
             }
         )
-
         Text(
             text = brand,
-
             fontSize = 16.sp,
-
             fontWeight = FontWeight.Medium,
-
             color = Color(0xFF111827)
         )
-
         Spacer(modifier = Modifier.weight(1f))
-
         Text(
             text = "Xoá",
             color = Color.Red,

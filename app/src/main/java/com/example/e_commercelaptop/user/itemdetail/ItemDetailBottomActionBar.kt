@@ -51,7 +51,7 @@ fun ItemDetailBottomActionBar(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // THÊM VÀO GIỎ (Outlined style)
+            // THÊM VÀO GIỎ
             OutlinedButton(
                 onClick = onAddToCartClick,
                 modifier = Modifier
@@ -75,8 +75,7 @@ fun ItemDetailBottomActionBar(
                     fontWeight = FontWeight.Medium
                 )
             }
-
-            // MUA NGAY (Filled style)
+            // MUA NGAY
             Button(
                 onClick = onBuyNowClick,
                 modifier = Modifier

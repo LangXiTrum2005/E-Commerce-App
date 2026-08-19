@@ -45,7 +45,6 @@ fun CartItemRow(
     onIncrease: () -> Unit,
     onDelete: () -> Unit
 ) {
-
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -56,31 +55,18 @@ fun CartItemRow(
                 top = 10.dp,
                 bottom = 10.dp
             ),
-
         verticalAlignment = Alignment.CenterVertically
     ) {
-
-        /*
-         * CHECKBOX
-         */
-
+         // CHECKBOX
         Checkbox(
             checked = isSelected,
             onCheckedChange = onSelectedChange,
-
             modifier = Modifier.size(36.dp)
         )
-
-
         Spacer(
             modifier = Modifier.width(8.dp)
         )
-
-
-        /*
-         * PRODUCT IMAGE
-         */
-
+        // PRODUCT IMAGE
         Box(
             modifier = Modifier
                 .size(105.dp)
@@ -95,74 +81,45 @@ fun CartItemRow(
                     RoundedCornerShape(8.dp)
                 )
                 .background(Color.White),
-
             contentAlignment = Alignment.Center
         ) {
-
             AsyncImage(
                 model = product.imageUrl,
-
                 contentDescription = product.name,
-
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp),
-
                 contentScale = ContentScale.Fit
             )
         }
-
-
         Spacer(
             modifier = Modifier.width(12.dp)
         )
-
-
-        /*
-         * PRODUCT INFORMATION
-         */
-
+        //PRODUCT INFORMATION
         Column(
             modifier = Modifier.weight(1f),
-
             verticalArrangement = Arrangement.Center
         ) {
-
             Text(
                 text = product.name,
-
                 fontSize = 15.sp,
-
                 fontWeight = FontWeight.Medium,
-
                 color = Color(0xFF111827),
-
                 maxLines = 2,
-
                 overflow = TextOverflow.Ellipsis
             )
-
-
             Spacer(
                 modifier = Modifier.size(8.dp)
             )
-
-
             Text(
                 text = product.price,
-
                 fontSize = 15.sp,
-
                 fontWeight = FontWeight.SemiBold,
-
                 color = Color(0xFF111827)
             )
-
-
             Spacer(
                 modifier = Modifier.size(6.dp)
             )
-
             Text(
                 text = "Xoá",
                 color = Color.Red,
@@ -171,68 +128,43 @@ fun CartItemRow(
                 modifier = Modifier
                     .clickable { onDelete() }
             )
-
             Spacer(
                 modifier = Modifier.size(6.dp)
             )
-
-
-            /*
-             * QUANTITY
-             */
-
+            //QUANTITY
             Row(
                 modifier = Modifier.fillMaxWidth(),
-
                 horizontalArrangement = Arrangement.End,
-
                 verticalAlignment = Alignment.CenterVertically
             ) {
-
                 IconButton(
                     onClick = onDecrease,
-
                     modifier = Modifier.size(28.dp)
                 ) {
-
                     Icon(
                         imageVector = Icons.Outlined.Remove,
-
                         contentDescription = "Giảm",
-
                         tint = Color(0xFF6B7280),
-
                         modifier = Modifier.size(18.dp)
                     )
                 }
-
-
                 Text(
                     text = quantity.toString(),
-
                     modifier = Modifier.width(28.dp),
-
                     fontSize = 14.sp,
-
                     color = Color(0xFF111827),
 
                     textAlign = TextAlign.Center
                 )
-
-
                 IconButton(
                     onClick = onIncrease,
-
                     modifier = Modifier.size(28.dp)
                 ) {
 
                     Icon(
                         imageVector = Icons.Outlined.Add,
-
                         contentDescription = "Tăng",
-
                         tint = Color(0xFF6B7280),
-
                         modifier = Modifier.size(18.dp)
                     )
                 }

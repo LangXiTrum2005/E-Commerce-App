@@ -32,32 +32,23 @@ fun CartHeader(
             .statusBarsPadding()
             .height(60.dp)
             .padding(horizontal = 8.dp),
-
         verticalAlignment = Alignment.CenterVertically,
-
         horizontalArrangement = Arrangement.Start
     ) {
-
         IconButton(
             onClick = onBackClick
         ) {
-
             Icon(
                 imageVector = Icons.Outlined.ArrowBack,
                 contentDescription = "Quay lại",
                 tint = Color(0xFF111827)
             )
         }
-
         Text(
             text = "Giỏ hàng ($cartItemCount)",
-
             modifier = Modifier.weight(1f),
-
             fontSize = 20.sp,
-
             fontWeight = FontWeight.SemiBold,
-
             color = Color(0xFF111827)
         )
     }

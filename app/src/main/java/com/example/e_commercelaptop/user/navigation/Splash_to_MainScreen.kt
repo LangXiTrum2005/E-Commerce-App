@@ -14,16 +14,12 @@ import androidx.navigation.navArgument
 import com.example.e_commercelaptop.screen.ItemDetailScreen
 import com.example.e_commercelaptop.screen.MainScreen
 import com.example.e_commercelaptop.data.OnboardingPrefs
-import com.example.e_commercelaptop.data.local.ProductRepository
 import com.example.e_commercelaptop.user.cart.CartScreen
 import com.example.e_commercelaptop.user.welcome.WelcomeScreen
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import kotlinx.coroutines.launch
 import com.example.e_commercelaptop.data.local.AppDatabase
-import com.example.e_commercelaptop.data.local.CartItemEntity
-import com.example.e_commercelaptop.data.local.ProductEntity
-
 @Composable
 fun Splash_to_MainScreen() {
 
@@ -52,11 +48,7 @@ fun Splash_to_MainScreen() {
                 "main"
             }
     ) {
-
-        // =====================================================
         // WELCOME
-        // =====================================================
-
         composable("welcome") {
 
             WelcomeScreen(
@@ -75,36 +67,22 @@ fun Splash_to_MainScreen() {
                 }
             )
         }
-
-        // =====================================================
         // MAIN
-        // =====================================================
-
         composable("main") {
-
             MainScreen(
-
                 onProductClick = { productId ->
-
-                    // =========================================
-                    // TRUYỀN ID CỦA SẢN PHẨM ĐƯỢC CLICK
-                    // =========================================
-
+                    // Truyền ID cho sản phẩm được click
                     navController.navigate(
                         "item_detail/$productId"
                     )
                 },
-
                 onCartClick = {
                     navController.navigate("cart")
                 }
             )
         }
 
-        // =====================================================
         // CART
-        // =====================================================
-
         composable("cart") {
             val database = remember { AppDatabase.getDatabase(context) }
             val coroutineScope = rememberCoroutineScope()

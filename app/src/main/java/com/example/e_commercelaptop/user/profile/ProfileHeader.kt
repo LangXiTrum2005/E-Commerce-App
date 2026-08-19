@@ -56,7 +56,7 @@ fun ProfileHeader(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.Top
         ) {
-            // Avatar and Info clickable area
+            // Avatar và thông tin
             Row(
                 modifier = Modifier
                     .weight(1f)
@@ -72,14 +72,11 @@ fun ProfileHeader(
                         .clip(CircleShape),
                     color = Color.LightGray
                 ) {
-                    // Avatar placeholder
                 }
 
                 Spacer(modifier = Modifier.width(16.dp))
-
-                // Info Column
                 Column {
-                    // Name and VIP Row
+                    // Name và VIP theo hàng
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
                             text = "Your Account",
@@ -123,7 +120,7 @@ fun ProfileHeader(
                 }
             }
 
-            // Top Right Icons (Separate from profile click)
+            // Icon trên phải
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(top = 4.dp)

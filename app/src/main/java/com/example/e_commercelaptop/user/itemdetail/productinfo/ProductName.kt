@@ -18,7 +18,6 @@ fun ProductName(
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
-
         Text(
             text = name,
             fontSize = 20.sp,

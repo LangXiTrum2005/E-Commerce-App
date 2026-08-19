@@ -77,24 +77,17 @@ fun ItemDetailScreen(
         mutableStateOf<ProductEntity?>(null)
     }
 
-    // =========================================================
     // LẤY ĐÚNG PRODUCT THEO ID
-    // =========================================================
-
     LaunchedEffect(productId) {
-
         product = withContext(Dispatchers.IO) {
-
             database
                 .productDao()
                 .getProductById(productId)
                 .first()
         }
     }
-
     Scaffold(
         topBar = {
-
             ItemDetailHeader(
                 onBackClick = onBackClick,
                 onFavoriteClick = {},
@@ -103,9 +96,7 @@ fun ItemDetailScreen(
                 cartItemCount = totalQuantity ?: 0
             )
         },
-
         bottomBar = {
-
             ItemDetailBottomActionBar(
                 onAddToCartClick = {
                     coroutineScope.launch {
@@ -121,7 +112,6 @@ fun ItemDetailScreen(
         }
 
     ) { innerPadding ->
-
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -131,28 +121,19 @@ fun ItemDetailScreen(
                     rememberScrollState()
                 )
         ) {
-
-            // =================================================
             // PRODUCT INFO
-            // =================================================
-
             if (product != null) {
-
                 ProductInfo(
                     product = product!!
                 )
-
             } else {
-
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(300.dp)
                         .background(Color.White),
-
                     contentAlignment = Alignment.Center
                 ) {
-
                     Text(
                         text = "Đang tải sản phẩm...",
                         fontSize = 14.sp,
@@ -160,21 +141,15 @@ fun ItemDetailScreen(
                     )
                 }
             }
-
             Spacer(
                 modifier = Modifier.height(8.dp)
             )
-
-            // =================================================
             // QUANTITY
-            // =================================================
-
             Box(
                 modifier = Modifier.background(
                     Color.White
                 )
             ) {
-
                 QuantitySelector(
                     quantity = quantity,
                     onQuantityChanged = { newQuantity ->
@@ -182,47 +157,32 @@ fun ItemDetailScreen(
                     }
                 )
             }
-
             Spacer(
                 modifier = Modifier.height(8.dp)
             )
-
-            // =================================================
             // SERVICE FEATURES
-            // =================================================
-
             Box(
                 modifier = Modifier.background(
                     Color.White
                 )
             ) {
-
                 ServiceFeatures()
             }
-
             Spacer(
                 modifier = Modifier.height(8.dp)
             )
-
-            // =================================================
             // TABS
-            // =================================================
-
             Column(
                 modifier = Modifier.background(
                     Color.White
                 )
             ) {
-
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(48.dp),
-
-                    verticalAlignment =
-                        Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-
                     TabItem(
                         text = "Mô tả sản phẩm",
                         isSelected = selectedTab == 0,
@@ -231,7 +191,6 @@ fun ItemDetailScreen(
                             selectedTab = 0
                         }
                     )
-
                     TabItem(
                         text = "Đánh giá",
                         isSelected = selectedTab == 1,
@@ -241,29 +200,17 @@ fun ItemDetailScreen(
                         }
                     )
                 }
-
-                HorizontalDivider(
-                    thickness = 1.dp,
-                    color = Color(0xFFF3F4F6)
+                HorizontalDivider(thickness = 1.dp, color = Color(0xFFF3F4F6)
                 )
-
-                // =================================================
                 // TAB CONTENT
-                // =================================================
-
                 if (selectedTab == 0) {
-
                     ProductDescription(
-                        description =
-                            product?.description ?: ""
+                        description = product?.description ?: ""
                     )
-
                 } else {
-
                     ReviewSection()
                 }
             }
-
             Spacer(
                 modifier = Modifier.height(20.dp)
             )
@@ -284,26 +231,18 @@ private fun TabItem(
             .clickable {
                 onClick()
             },
-
-        verticalArrangement =
-            Arrangement.Center,
-
-        horizontalAlignment =
-            Alignment.CenterHorizontally
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         Text(
             text = text,
-
             fontSize = 15.sp,
-
             fontWeight =
                 if (isSelected) {
                     FontWeight.Bold
                 } else {
                     FontWeight.Medium
                 },
-
             color =
                 if (isSelected) {
                     Color(0xFF2875F2)
@@ -311,20 +250,15 @@ private fun TabItem(
                     Color(0xFF6B7280)
                 }
         )
-
         if (isSelected) {
-
             Spacer(
                 modifier = Modifier.height(4.dp)
             )
-
             Box(
                 modifier = Modifier
                     .width(40.dp)
                     .height(2.dp)
-                    .background(
-                        Color(0xFF2875F2)
-                    )
+                    .background(Color(0xFF2875F2))
             )
         }
     }

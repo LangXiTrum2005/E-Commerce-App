@@ -37,33 +37,24 @@ fun MainScreen_to_ItemDetailScreen() {
         navController = navController,
         startDestination = AppRoutes.MAIN
     ) {
-
         // MAIN SCREEN
-
         composable(
             route = AppRoutes.MAIN
         ) {
-
             MainScreen(
-
                 onProductClick = { productId ->
                     // Khi click BẤT KỲ ProductCard nào
-                    // → chuyển sang ItemDetailScreen
                     navController.navigate(
                         "item_detail/$productId"
                     )
                 },
                 onCartClick = {
                     navController.navigate(AppRoutes.CART)
-                }
+                } // Chuyển sang ItemDetailScreen
             )
         }
 
-
-        // =========================================================
         // ITEM DETAIL SCREEN
-        // =========================================================
-
         composable(
             route = AppRoutes.ITEM_DETAIL,
             arguments = listOf(
@@ -71,11 +62,10 @@ fun MainScreen_to_ItemDetailScreen() {
             )
         ) { backStackEntry ->
             val productId = backStackEntry.arguments?.getInt("productId") ?: 0
-
             ItemDetailScreen(
                 productId = productId,
                 onBackClick = {
-                    // ← quay lại MainScreen
+                    // Quay lại MainScreen
                     navController.popBackStack()
                 },
                 onCartClick = {
@@ -84,20 +74,15 @@ fun MainScreen_to_ItemDetailScreen() {
             )
         }
 
-        // =========================================================
         // CART SCREEN
-        // =========================================================
-
         composable(
             route = AppRoutes.CART
         ) {
             val context = LocalContext.current
             val database = remember { AppDatabase.getDatabase(context) }
             val coroutineScope = rememberCoroutineScope()
-
             val cartItems by database.cartDao().getAllCartItems().collectAsState(initial = emptyList())
             val allProducts by database.productDao().getAllProducts().collectAsState(initial = emptyList())
-
             val cartProducts = remember(cartItems, allProducts) {
                 cartItems.mapNotNull { cartItem ->
                     allProducts.find { it.id == cartItem.productId }

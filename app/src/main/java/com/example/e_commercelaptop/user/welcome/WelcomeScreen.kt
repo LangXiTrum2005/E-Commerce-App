@@ -63,8 +63,6 @@ fun WelcomeScreen(
             Spacer(
                 modifier = Modifier.height(22.dp)
             )
-
-
             // ICON LAPTOP
             Icon(
                 imageVector = Icons.Default.Laptop,
@@ -72,12 +70,9 @@ fun WelcomeScreen(
                 tint = Color(0xFF2875F2),
                 modifier = Modifier.size(55.dp)
             )
-
-
             Spacer(
                 modifier = Modifier.height(10.dp)
             )
-
             Text(
                 text = "E-Commerce Laptop",
                 fontSize = 32.sp,
@@ -86,11 +81,9 @@ fun WelcomeScreen(
                 textAlign = TextAlign.Center
             )
 
-
             Spacer(
                 modifier = Modifier.height(12.dp)
             )
-
 
             // DESCRIPTION
             Text(
@@ -101,8 +94,6 @@ fun WelcomeScreen(
                 lineHeight = 24.sp,
                 textAlign = TextAlign.Center
             )
-
-
             Spacer(
                 modifier = Modifier.height(22.dp)
             )
@@ -114,8 +105,6 @@ fun WelcomeScreen(
                     "Tìm kiếm và so sánh hàng ngàn mẫu laptop chính hãng, cập nhật liên tục."
             )
 
-
-
             FeatureCard(
                 icon = Icons.Default.LocalOffer,
                 title = "Lựa chọn thông minh",
@@ -123,16 +112,12 @@ fun WelcomeScreen(
                     "Xem cấu hình, đánh giá và gợi ý để chọn laptop phù hợp với bạn."
             )
 
-
-
             FeatureCard(
                 icon = Icons.Default.Security,
                 title = "Mua sắm an tâm",
                 description =
                     "Thông tin minh bạch, giá tốt và chính sách bảo hành rõ ràng."
             )
-
-
 
             FeatureCard(
                 icon = Icons.Default.FavoriteBorder,
@@ -155,24 +140,19 @@ fun WelcomeScreen(
                     containerColor = Color(0xFF2855F5)
                 )
             ) {
-
                 Icon(
                     imageVector = Icons.Default.Login,
                     contentDescription = null
                 )
-
                 Spacer(
                     modifier = Modifier.width(12.dp)
                 )
-
                 Text(
                     text = "Welcome",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
             }
-
-
             Spacer(
                 modifier = Modifier.height(24.dp)
             )
@@ -221,11 +201,9 @@ fun FeatureCard(
             )
         }
 
-
         Spacer(
             modifier = Modifier.width(15.dp)
         )
-
 
         Column(
             modifier = Modifier.weight(1f)

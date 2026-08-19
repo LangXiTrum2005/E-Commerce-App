@@ -55,7 +55,6 @@ fun ItemDetailHeader(
                 modifier = Modifier.size(28.dp)
             )
         }
-
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(4.dp)
@@ -64,7 +63,6 @@ fun ItemDetailHeader(
                 onClick = onFavoriteClick,
                 modifier = Modifier.size(48.dp)
             ) {
-
                 Icon(
                     imageVector = Icons.Outlined.FavoriteBorder,
                     contentDescription = "Yêu thích",

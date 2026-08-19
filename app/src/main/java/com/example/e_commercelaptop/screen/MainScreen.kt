@@ -179,7 +179,6 @@ fun MainScreen(
                 Spacer(
                     modifier = Modifier.height(4.dp)
                 )
-
                 LazyVerticalGrid(
                     modifier = Modifier.fillMaxSize(),
                     columns = GridCells.Fixed(2),

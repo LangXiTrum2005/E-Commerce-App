@@ -33,16 +33,13 @@ fun CartScreen(
 ) {
 
     val totalQuantity = quantities.values.sum()
-
     val selectedCount = selectedProductIds.size
-
     val totalPriceValue = products
         .filter { selectedProductIds.contains(it.id) }
         .sumOf { product ->
             val priceValue = product.price.replace(Regex("[^0-9]"), "").toLongOrNull() ?: 0L
             priceValue * (quantities[product.id] ?: 1)
         }
-
     val formattedTotalPrice = java.text.DecimalFormat("#,###")
         .format(totalPriceValue)
         .replace(",", ".") + "₫"
@@ -52,14 +49,8 @@ fun CartScreen(
             .fillMaxSize()
             .background(Color(0xFFF5F5F5))
     ) {
-
-        /*
-         * =========================
-         * HEADER
-         * =========================
-         */
-
-        Surface(
+         // HEADER
+         Surface(
             modifier = Modifier.fillMaxWidth(),
             color = Color.White
         ) {
@@ -68,41 +59,21 @@ fun CartScreen(
                 onBackClick = onBackClick
             )
         }
-
-
-        /*
-         * =========================
-         * CONTENT
-         * =========================
-         */
-
+        // CONTENT
         LazyColumn(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth(),
-
-            contentPadding = PaddingValues(
-                top = 8.dp,
-                bottom = 8.dp
-            )
+            contentPadding = PaddingValues(top = 8.dp, bottom = 8.dp)
         ) {
-
-            /*
-             * =========================
-             * GROUP PRODUCTS BY BRAND
-             * =========================
-             */
-
-            val groupedProducts = products.groupBy {
+            // GROUP PRODUCTS BY BRAND
+             val groupedProducts = products.groupBy {
                 it.brand
             }
-
             groupedProducts.forEach { (brand, brandProducts) ->
-
                 item(
                     key = "brand_$brand"
                 ) {
-
                     CartBrandHeader(
                         brand = brand,
                         products = brandProducts,
@@ -117,14 +88,12 @@ fun CartScreen(
                         }
                     )
                 }
-
                 items(
                     items = brandProducts,
                     key = { product ->
                         product.id
                     }
                 ) { product ->
-
                     CartItemRow(
                         product = product,
                         quantity = quantities[product.id] ?: 1,
@@ -132,7 +101,6 @@ fun CartScreen(
                             product.id
                         ),
                         onSelectedChange = { selected ->
-
                             onProductSelected(
                                 product.id,
                                 selected
@@ -150,19 +118,9 @@ fun CartScreen(
                     )
                 }
             }
-
-
-
         }
-
-
-        /*
-         * =========================
-         * BOTTOM BAR
-         * =========================
-         */
-
-        CartBottomBar(
+        //BOTTOM BAR
+       CartBottomBar(
             selectedCount = selectedCount,
             totalPrice = formattedTotalPrice,
             allSelected = products.isNotEmpty() &&

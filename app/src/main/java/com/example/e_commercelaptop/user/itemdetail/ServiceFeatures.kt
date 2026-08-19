@@ -46,27 +46,21 @@ fun ServiceFeatures() {
                 subtitle = "Toàn quốc",
 
             )
-            
             VerticalDivider(modifier = Modifier.height(60.dp), color = Color(0xFFF3F4F6))
-
             ServiceFeatureItem(
                 modifier = Modifier.weight(1f),
                 icon = Icons.Outlined.Replay,
                 title = "Đổi trả dễ dàng",
                 subtitle = "Trong 7 ngày"
             )
-
             VerticalDivider(modifier = Modifier.height(60.dp), color = Color(0xFFF3F4F6))
-
             ServiceFeatureItem(
                 modifier = Modifier.weight(1f),
                 icon = Icons.Outlined.Verified,
                 title = "Sản phẩm chính hãng",
                 subtitle = "100%"
             )
-
             VerticalDivider(modifier = Modifier.height(60.dp), color = Color(0xFFF3F4F6))
-
             ServiceFeatureItem(
                 modifier = Modifier.weight(1f),
                 icon = Icons.Outlined.HeadsetMic,
